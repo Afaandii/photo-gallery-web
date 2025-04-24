@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.hero{
+  background-image: url("./assets/img/background-hero.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.custom-pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px; /* Pagination benar-benar di bawah */
+  position: relative;
+  z-index: 10; /* Supaya tetap terlihat */
+}
+
+.swiper-pagination-bullet {
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 10px;
+  height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #f97316; /* Warna oranye untuk active */
+}
+
