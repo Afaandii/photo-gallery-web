@@ -59,7 +59,7 @@ export default function Navigasi() {
             <li>
               <a
                 href="/"
-                className="hover:bg-[#FF85C2] hover:scale-110 transition duration-700 ease-in-out"
+                className="hover:bg-[#dc2121] hover:scale-110 transition duration-700 ease-in-out"
               >
                 Home
               </a>
@@ -67,30 +67,14 @@ export default function Navigasi() {
             <li>
               <a
                 href="/about"
-                className="hover:bg-[#FF85C2] hover:scale-110 transition duration-700 ease-in-out"
+                className="hover:bg-[#dc2121] hover:scale-110 transition duration-700 ease-in-out"
               >
                 About
               </a>
             </li>
-            <li className="hover:bg-[#FF85C2] transition duration-700 ease-in-out rounded-md">
+            <li className="hover:bg-[#dc2121] hover:scale-110 transition duration-700 ease-in-out rounded-md">
               <a href="/posts">Posts</a>
             </li>
-            {/* <li>
-              <details>
-                <summary className="hover:bg-[#FF85C2] hover:scale-110 transition duration-700 ease-in-out">
-                  Menu
-                </summary>
-                <ul className="p-2 bg-slate-800">
-                  <li className="hover:bg-[#FF85C2] transition duration-700 ease-in-out rounded-md">
-                    <a href="/product">Product</a>
-                  </li>
-                  <li className="hover:bg-[#FF85C2] transition duration-700 ease-in-out rounded-md mt-2 mb-2">
-                    <a href="/contact">Contact</a>
-                  </li>
-                  
-                </ul>
-              </details>
-            </li> */}
           </ul>
         </div>
         <div className="navbar-end gap-3 mr-3">
