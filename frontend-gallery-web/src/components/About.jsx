@@ -80,15 +80,15 @@ export default function About() {
               />
             </figure>
             <div className="card-body w-full md:w-[30%] text-center md:text-left">
-              <h2 className="card-title text-2xl ml-24 mb-3 text-slate-600 md:text-2xl">
+              <h2 className="card-title text-2xl mb-3 text-slate-600 md:text-2xl">
                 Ahmad Afandi
               </h2>
               <h4 className="text-lg md:text-xl text-slate-600">
-                Development website foto kenangan dan pengelola
+                Development website Gallery Photo dan pengelola
               </h4>
               <p className="text-base md:text-lg text-slate-600">
-                Pengembang perangkat lunak aplikasi website fullstack junior,
-                pendidikan sekolah menengah kejurusan.
+                Pengembang perangkat lunak aplikasi website, <br /> pendidikan
+                sekolah menengah kejurusan.
               </p>
             </div>
           </div>
