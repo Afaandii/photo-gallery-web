@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import foto from "../assets/img/person-img.jpeg";
 import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 const fotoSlide = [foto, foto, foto, foto, foto, foto, foto];
 
 export default function Carousel() {
@@ -30,7 +30,11 @@ export default function Carousel() {
       {/* Carousel */}
       <div className="relative w-full flex justify-center mt-6">
         <Swiper
-          modules={[Pagination, Autoplay]}
+          modules={[Pagination, Autoplay, Navigation]}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
           spaceBetween={20}
           pagination={{ el: ".custom-pagination", clickable: true }}
           autoplay={{ delay: 3000 }}
@@ -53,6 +57,14 @@ export default function Carousel() {
             </SwiperSlide>
           ))}
         </Swiper>
+      </div>
+
+      {/* Tombol Panah, sudah dikasih posisi */}
+      <div className="swiper-button-prev absolute top-1/2 left-24 md:left-24 transform translate-y-1/2">
+        <span className="text-4xl cursor-pointer text-slate-800">&#60;</span>
+      </div>
+      <div className="swiper-button-next absolute top-1/2 right-24 md:right-24 transform translate-y-1/2 ">
+        <span className="text-4xl cursor-pointer text-slate-800">&#62;</span>
       </div>
 
       {/* Custom Pagination */}
