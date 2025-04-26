@@ -15,13 +15,15 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|unique:users,name|max:25|min:4',
             'email' => 'required|unique:users,email|max:25|min:8',
-            'password' => 'required|min:8|max:12'
+            'password' => 'required|min:8|max:12',
+            'role_id' => 'min:5|max:20',
         ]);
 
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
+            'role_id' => 3, //set default user saat registrasi
         ]);
 
         $token = $user->createToken('singup-token')->plainTextToken;
