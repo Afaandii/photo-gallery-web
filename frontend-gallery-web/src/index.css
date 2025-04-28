@@ -11,6 +11,12 @@
   height: 100vh;
   width: 100%;
 }
+.faq{
+  background-image: url("./assets/img/vintage-bg-1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .register{
   background-image: url("./assets/img/background-hero.jpeg");
   background-size: cover;

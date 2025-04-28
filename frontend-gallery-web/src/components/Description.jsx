@@ -45,11 +45,12 @@ export default function Description() {
   const rightColumn = faqItems.slice(Math.ceil(faqItems.length / 2));
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#FF69B4] px-6 py-10">
-      <h1 className="font-bold text-center text-3xl md:text-4xl text-white mb-10">
+    <div className="faq relative flex flex-col items-center justify-center min-h-screen  px-6 py-10">
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <h1 className="relative z-10 font-bold text-center text-3xl md:text-4xl text-white mb-10">
         FAQ
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
         {/* Kolom Kiri */}
         <div className="flex flex-col space-y-4">
           {leftColumn.map((item, index) => (
