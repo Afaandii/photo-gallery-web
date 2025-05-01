@@ -46,12 +46,12 @@ export default function Register() {
 
           <form className="space-y-4" onSubmit={handleRegister}>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Name
               </label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border bg-transparent placeholder:text-slate-800 border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                className="w-full px-4 py-2 border bg-transparent placeholder:text-black border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
                 placeholder="Buat Name anda"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -59,12 +59,12 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Email
               </label>
               <input
                 type="email"
-                className="w-full px-4 py-2 bg-transparent placeholder:text-slate-800 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                className="w-full px-4 py-2 bg-transparent placeholder:text-black border border-orange-500 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
                 placeholder="Buat Email Kamu "
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -72,12 +72,12 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-800 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Password
               </label>
               <input
                 type="password"
-                className="w-full px-4 py-2 border bg-transparent placeholder:text-slate-800  border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                className="w-full px-4 py-2 border bg-transparent placeholder:text-black  border-orange-500 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
                 placeholder="Buat Password anda"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
