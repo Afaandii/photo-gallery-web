@@ -39,19 +39,19 @@ export default function Register() {
   return (
     <>
       <div className="register min-h-screen bg-black bg-opacity-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full border border-slate-800 rounded-xl shadow-xl p-8">
+        <div className="max-w-md w-full border-separate border-orange-600 rounded-xl shadow-2xl p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
             Registrasi
           </h2>
 
           <form className="space-y-4" onSubmit={handleRegister}>
             <div>
-              <label className="block text-sm font-medium text-black mb-1">
+              <label className="block text-md font-medium text-black mb-1">
                 Name
               </label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border bg-transparent placeholder:text-black border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                className="w-full px-4 py-2 border bg-transparent placeholder:text-black border-orange-500 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
                 placeholder="Buat Name anda"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -59,7 +59,7 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-black mb-1">
+              <label className="block text-md font-medium text-black mb-1">
                 Email
               </label>
               <input
@@ -72,7 +72,7 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-black mb-1">
+              <label className="block text-md font-medium text-black mb-1">
                 Password
               </label>
               <input
