@@ -4,9 +4,9 @@ export default function Footer() {
       <footer className="footer flex justify-between items-center bg-neutral text-neutral-content p-10">
         <aside>
           <img
-            src="../src/assets/img/logo_sementara.png"
+            src="./src/assets/img/logo-gallery-photo-web-nw.png"
             alt="logo footer"
-            className="w-20 h-20 rounded-full"
+            className="w-20 h-[75px] rounded-full"
           />
           <p className="mb-2 mt-2">Website Foto Kenangan</p>
           <p>Providing reliable tech since 2025</p>
