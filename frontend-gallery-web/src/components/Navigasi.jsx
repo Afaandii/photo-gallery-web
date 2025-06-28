@@ -47,12 +47,11 @@ export default function Navigasi() {
               </li>
             </ul>
           </div>
-          <img
-            className="rounded-full ml-2"
-            src="../src/assets/img/logo_sementara.png"
-            width={65}
-            height={60}
-          />
+          <div className="avatar">
+            <div className="ring-white ring-offset-base-100 w-[4.5rem] h-[65px] rounded-full mt-3 ml-3 ring-2 ring-offset-2">
+              <img src="./src/assets/img/logo-gallery-photo-web-nw.png" />
+            </div>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-5 text-lg font-medium text-slate-100">
