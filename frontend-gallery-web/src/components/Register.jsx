@@ -38,8 +38,8 @@ export default function Register() {
   };
   return (
     <>
-      <div className="register min-h-screen bg-black bg-opacity-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full border-separate border-orange-600 rounded-xl shadow-2xl p-8">
+      <div className="register min-h-screen flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-slate-200 bg-opacity-60 rounded-xl shadow-2xl p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
             Registrasi
           </h2>
@@ -51,7 +51,7 @@ export default function Register() {
               </label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border bg-transparent placeholder:text-black border-orange-500 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                className="w-full px-4 py-2 border bg-transparent placeholder:text-black border-slate-500 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                 placeholder="Buat Name anda"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -64,7 +64,7 @@ export default function Register() {
               </label>
               <input
                 type="email"
-                className="w-full px-4 py-2 bg-transparent placeholder:text-black border border-orange-500 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                className="w-full px-4 py-2 bg-transparent placeholder:text-black border border-slate-500 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                 placeholder="Buat Email Kamu "
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -77,7 +77,7 @@ export default function Register() {
               </label>
               <input
                 type="password"
-                className="w-full px-4 py-2 border bg-transparent placeholder:text-black  border-orange-500 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                className="w-full px-4 py-2 border bg-transparent placeholder:text-black  border-slate-500 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                 placeholder="Buat Password anda"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -91,7 +91,7 @@ export default function Register() {
 
           <p className="text-red-500">{errorMessage}</p>
 
-          <div className="mt-6 text-center text-sm text-gray-600">
+          <div className="mt-6 text-center text-sm text-black">
             Sudah memiliki akun?
             <a
               onClick={() =>
