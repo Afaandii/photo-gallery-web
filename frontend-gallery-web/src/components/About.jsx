@@ -69,12 +69,12 @@ export default function About() {
 
         <div className="min-h-[100vh] w-full flex flex-col justify-center items-center bg-[#FFB6C1] p-4">
           <h1 className="text-2xl md:text-3xl font-bold text-slate-500 mb-10 md:-ml-[50%] lg:-ml-[65%] text-center md:text-left">
-            Profile Founders
+            Founders Gallery Web
           </h1>
           <div className="card card-side flex flex-col md:flex-row bg-base-200 shadow-xl w-full md:w-[85%] p-4 md:p-0">
             <figure className="w-full md:w-auto rounded-xl flex justify-center">
               <img
-                src="../src/assets/img/foto me.jpg"
+                src="./src/assets/img/foto me.jpg"
                 alt="Movie"
                 className="w-[450px] md:w-[350px] h-[350px] md:h-[400px] hover:scale-110 duration-500 cursor-pointer"
               />
