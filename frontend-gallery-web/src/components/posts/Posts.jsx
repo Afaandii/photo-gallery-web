@@ -22,7 +22,7 @@ export default function Posts() {
       <div className="bg-[#C9A9A6] max-w-full h-auto min-h-[100vh] p-5">
         <div className="pl-5 pr-5 flex justify-between items-center">
           <h1 className="text-3xl text-slate-600 font-bold text-center md:text-left">
-            Trending Photo Posts
+            All Photo Posts
           </h1>
           <a
             href="/"
