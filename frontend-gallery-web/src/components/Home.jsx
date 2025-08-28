@@ -1,12 +1,13 @@
 import { useRef } from "react";
 import Footer from "./Footer";
 import Navigasi from "./Navigasi";
+import Card from "./Card";
 
 export default function Home() {
-  const carouselRef = useRef(null);
+  const cardRef = useRef(null);
 
-  const scrollToCarousel = () => {
-    carouselRef.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToCard = () => {
+    cardRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -25,13 +26,16 @@ export default function Home() {
           </p>
           <a
             className="btn btn-outline btn-error w-[150px] hover:scale-125 duration-500"
-            onClick={scrollToCarousel}
+            onClick={scrollToCard}
           >
             Coba Sekarang
           </a>
         </div>
       </div>
 
+      <div ref={cardRef}>
+        <Card />
+      </div>
       <div>
         <Footer />
       </div>
