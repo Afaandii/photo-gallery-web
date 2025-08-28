@@ -1,78 +1,75 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navigasi() {
   return (
     <>
       <div className="navbar bg-opacity-50 bg-black text-white">
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </div>
-            {/* ul untuk mode mobile */}
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-slate-800 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Item 6</a>
-              </li>
-              <li>
-                <a>Menu</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
           <div className="avatar">
-            <div className="ring-white ring-offset-base-100 w-[4.5rem] h-[65px] rounded-full mt-3 ml-3 ring-2 ring-offset-2">
-              <img src="./src/assets/img/logo-gallery-photo-web-nw.png" />
+            <div className=" w-[250px] h-14 mt-3 ml-3 ">
+              <img src="./src/assets/img/nav-logo.png" />
             </div>
           </div>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-5 text-lg font-medium text-slate-100">
+        <div className="navbar-center hidden lg:flex items-center">
+          {/* Search Form */}
+          <form action="" className="mr-6">
+            <div className="relative w-[450px]">
+              <span className="absolute z-50 left-4 top-1/2 -translate-y-1/2 text-gray-300">
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className="text-gray-300"
+                />
+              </span>
+              <input
+                type="search"
+                name="keyword"
+                id="keyword"
+                placeholder="Cari Gambar serta item lainnya"
+                className="w-full pl-12 pr-4 py-3 rounded-full bg-gray-700/70 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/40 backdrop-blur-md shadow"
+              />
+            </div>
+          </form>
+
+          {/* Menu Nav */}
+          <ul className="menu menu-horizontal px-1 gap-2 text-lg font-medium text-slate-100">
             <li>
               <a
                 href="/"
-                className="hover:bg-[#dc2121] hover:scale-110 transition duration-700 ease-in-out"
+                className="relative inline-block text-[18px] no-underline text-white font-poppins group"
               >
-                Home
+                Beranda
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </li>
             <li>
               <a
                 href="/about"
-                className="hover:bg-[#dc2121] hover:scale-110 transition duration-700 ease-in-out"
+                className="relative inline-block text-[18px] no-underline text-white font-poppins group"
               >
                 About
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </li>
-            <li className="hover:bg-[#dc2121] hover:scale-110 transition duration-700 ease-in-out rounded-md">
-              <a href="/posts">Posts</a>
+            <li>
+              <a
+                href="/posts"
+                className="relative inline-block text-[18px] no-underline text-white font-poppins group"
+              >
+                Blog
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/"
+                className="relative inline-block text-[18px] no-underline text-white font-poppins group"
+              >
+                Explore
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+              </a>
             </li>
           </ul>
         </div>
@@ -81,18 +78,18 @@ export default function Navigasi() {
             onClick={() =>
               (document.location.href = "http://localhost:8000/admin")
             }
-            className="btn btn-outline btn-error hover:scale-110 duration-500"
+            className=" btn btn-outline btn-error px-6  hover:scale-110 duration-500"
           >
             Login
             <FontAwesomeIcon icon={faArrowRightToBracket} />
           </a>
-          <a
+          {/* <a
             href="/register"
             className="btn btn-outline btn-error hover:scale-110 duration-500"
           >
             Register
             <FontAwesomeIcon icon={faArrowRightToBracket} />
-          </a>
+          </a> */}
         </div>
       </div>
     </>
