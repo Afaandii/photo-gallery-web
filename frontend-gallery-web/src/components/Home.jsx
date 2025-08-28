@@ -20,12 +20,10 @@ export default function Home() {
           <h1 className="font-bold text-slate-400 text-5xl">
             Selamat Datang Di
           </h1>
-          <h2 className="font-medium text-slate-400 text-4xl ">
-            Web Gallery Foto
-          </h2>
+          <h2 className="font-medium text-slate-400 text-4xl ">PixFlow</h2>
           <p className="max-w-[700px] text-slate-400 text-center font-medium ">
-            Website Gallery Foto untuk menyimpan kenangan bersama pasangan atau
-            keluarga anda untuk mengabadikan momen indah.
+            PixFlow adalah website untuk menyimpan kenangan bersama pasangan
+            atau keluarga anda untuk mengabadikan momen indah.
           </p>
           <a
             className="btn btn-outline btn-error w-[150px] hover:scale-125 duration-500"
