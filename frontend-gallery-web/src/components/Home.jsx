@@ -1,6 +1,4 @@
 import { useRef } from "react";
-import Carousel from "./Carousel";
-import Description from "./Description";
 import Footer from "./Footer";
 import Navigasi from "./Navigasi";
 
@@ -34,12 +32,6 @@ export default function Home() {
         </div>
       </div>
 
-      <div ref={carouselRef}>
-        <Carousel />
-      </div>
-      <div>
-        <Description />
-      </div>
       <div>
         <Footer />
       </div>
