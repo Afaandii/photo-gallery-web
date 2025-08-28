@@ -33,7 +33,7 @@ export default function Footer() {
                 <FontAwesomeIcon icon={faGithub} />
               </a>
               <a
-                href="/"
+                href="https://www.instagram.com/afandiii._/"
                 className="text-3xl text-black"
                 aria-label="instagram"
               >
