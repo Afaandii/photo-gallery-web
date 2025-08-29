@@ -3,7 +3,7 @@ export default function Card() {
     <>
       <section className="max-w-7xl mx-auto px-4 py-8">
         <h1 className="text-[18px] font-bold mb-5">
-          Temukan lebih dari 1 juta gambar yang dibagikan atau diabadikan oleh
+          Temukan lebih dari 1 juta gambar yang dibagikan atau diabadikan dari
           beberapa orang.
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
