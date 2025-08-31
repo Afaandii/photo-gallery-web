@@ -5,7 +5,7 @@ export default function About() {
     <>
       <div className="hero w-screen h-[100vh] flex flex-col">
         <Navigasi />
-        <div className="h-full flex flex-col justify-center items-center text-white text-center px-4 bg-opacity-50 bg-black w-full">
+        <div className="h-full flex flex-col justify-center items-center text-slate-400 text-center px-4 bg-opacity-50 bg-black w-full">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Kreativitas Tanpa Batas
           </h1>
@@ -14,14 +14,14 @@ export default function About() {
           </p>
           <a
             href="/gallery"
-            className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-full shadow text-white font-medium"
+            className="btn btn-outline btn-primary !text-white w-[150px] hover:scale-110 duration-500"
           >
             Jelajahi Galeri
           </a>
         </div>
       </div>
 
-      <section className=" bg-gray-100">
+      <section className=" bg-gray-50">
         {/* Section Tentang Kami */}
         <div className="max-w-5xl mx-auto py-16 px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Tentang Kami</h2>
@@ -95,7 +95,7 @@ export default function About() {
           </p>
           <a
             href="/upload"
-            className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-medium shadow-lg"
+            className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-medium shadow-lg"
           >
             Mulai Unggah Foto
           </a>
