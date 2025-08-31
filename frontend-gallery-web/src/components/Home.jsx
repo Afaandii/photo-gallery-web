@@ -25,7 +25,7 @@ export default function Home() {
             atau keluarga anda untuk mengabadikan momen indah.
           </p>
           <a
-            className="btn btn-outline btn-error w-[150px] hover:scale-125 duration-500"
+            className="btn btn-outline !text-white btn-primary w-[150px] hover:scale-110 duration-500"
             onClick={scrollToCard}
           >
             Coba Sekarang

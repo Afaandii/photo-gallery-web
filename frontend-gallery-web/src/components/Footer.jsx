@@ -6,7 +6,7 @@ import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 export default function Footer() {
   return (
     <>
-      <hr className="bg-black h-[1px] w-full" />
+      <hr className="bg-black w-full" />
       <footer className="bg-[#ffff] text-neutral-content p-10" data-aos="fade">
         <div className="footer sm:footer-horizontal">
           <aside>
