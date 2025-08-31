@@ -32,54 +32,65 @@ export default function About() {
           </p>
         </div>
 
-        {/* Fitur */}
-        <div className="max-w-6xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          <div className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
-            <span className="text-4xl">📸</span>
-            <h3 className="mt-4 font-semibold text-lg">Unggah & Bagikan</h3>
-            <p className="text-gray-600 mt-2 text-sm">
-              Bagikan hasil foto terbaikmu untuk dilihat dunia.
-            </p>
+        {/* Visi & Misi */}
+        <div className="max-w-[75rem] mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Misi */}
+          <div className="relative rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Misi"
+              className="w-full h-64 object-cover"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-6">
+              <span className="text-sm uppercase tracking-widest text-gray-200">
+                MISI
+              </span>
+              <h3 className="mt-2 text-xl md:text-2xl font-bold text-white">
+                Memberdayakan kreativitas global melalui media gratis
+                berkualitas tinggi.
+              </h3>
+            </div>
           </div>
-          <div className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
-            <span className="text-4xl">🌍</span>
-            <h3 className="mt-4 font-semibold text-lg">
-              Foto dari Seluruh Dunia
-            </h3>
-            <p className="text-gray-600 mt-2 text-sm">
-              Jelajahi koleksi dari berbagai belahan dunia.
-            </p>
-          </div>
-          <div className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
-            <span className="text-4xl">🎨</span>
-            <h3 className="mt-4 font-semibold text-lg">Bebas Digunakan</h3>
-            <p className="text-gray-600 mt-2 text-sm">
-              Gunakan foto untuk proyek pribadi atau komersial.
-            </p>
-          </div>
-          <div className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
-            <span className="text-4xl">🤝</span>
-            <h3 className="mt-4 font-semibold text-lg">Komunitas Kreatif</h3>
-            <p className="text-gray-600 mt-2 text-sm">
-              Terhubung dengan fotografer & kreator lainnya.
-            </p>
+
+          {/* Visi */}
+          <div className="relative rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Visi"
+              className="w-full h-64 object-cover"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-6">
+              <span className="text-sm uppercase tracking-widest text-gray-200">
+                VISI
+              </span>
+              <h3 className="mt-2 text-xl md:text-2xl font-bold text-white">
+                Konten yang menginspirasi untuk semua kreator.
+              </h3>
+            </div>
           </div>
         </div>
 
         {/* Statistik */}
-        <div className="bg-indigo-600 py-16 text-white">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <h3 className="text-4xl font-bold">20K+</h3>
-              <p>Foto Gratis</p>
+        <div className="py-10 bg-gray-50">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="bg-gray-100 shadow-md rounded-xl p-6 text-center">
+              <h3 className="text-3xl font-extrabold text-gray-900">5.7M+</h3>
+              <p className="mt-2 text-gray-500">Aset media</p>
             </div>
-            <div>
-              <h3 className="text-4xl font-bold">5K+</h3>
-              <p>Kontributor Aktif</p>
+
+            <div className="bg-gray-100 shadow-md rounded-xl p-6 text-center">
+              <h3 className="text-3xl font-extrabold text-gray-900">6B+</h3>
+              <p className="mt-2 text-gray-500">Muat turun</p>
             </div>
-            <div>
-              <h3 className="text-4xl font-bold">1M+</h3>
-              <p>Unduhan</p>
+
+            <div className="bg-gray-100 shadow-md rounded-xl p-6 text-center">
+              <h3 className="text-3xl font-extrabold text-gray-900">400K+</h3>
+              <p className="mt-2 text-gray-500">Kreator</p>
+            </div>
+
+            <div className="bg-gray-100 shadow-md rounded-xl p-6 text-center">
+              <h3 className="text-3xl font-extrabold text-gray-900">200+</h3>
+              <p className="mt-2 text-gray-500">Negara</p>
             </div>
           </div>
         </div>
@@ -87,7 +98,7 @@ export default function About() {
         {/* Call to Action */}
         <div className="max-w-5xl mx-auto py-20 text-center px-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ikut Berkontribusi?
+            Mau Ikut Berkontribusi?
           </h2>
           <p className="text-gray-600 mb-8">
             Unggah karya terbaikmu dan jadilah bagian dari komunitas kreatif
