@@ -16,7 +16,7 @@ export default function Home() {
         <Navigasi />
 
         <div className="flex flex-col justify-center items-center h-full gap-5 bg-opacity-50 bg-black w-full">
-          <h1 className="font-bold text-slate-400 text-5xl">
+          <h1 className="font-bold text-center text-slate-400 lg:text-5xl text-4xl">
             Selamat Datang Di
           </h1>
           <h2 className="font-medium text-slate-400 text-4xl ">PixFlow</h2>
