@@ -1,12 +1,13 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
+import Footer from "../Footer";
 import Navigasi from "../Navigasi";
 
 export default function Blogs() {
   return (
     <>
-      <section className="w-full h-full">
+      <section className="w-full h-full mb-3">
         <div className="hero w-screen h-auto flex flex-col">
           <Navigasi />
           <div className="h-full flex flex-col justify-center items-center text-slate-400 text-center px-4 bg-opacity-50 bg-black w-full">
@@ -78,6 +79,8 @@ export default function Blogs() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </>
   );
 }
