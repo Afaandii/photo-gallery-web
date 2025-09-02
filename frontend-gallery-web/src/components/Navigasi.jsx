@@ -87,7 +87,7 @@ export default function Navigasi() {
             </li>
             <li>
               <a
-                href="/posts"
+                href="/blogs"
                 className="relative inline-block text-[18px] no-underline text-white font-poppins group"
               >
                 Blog
