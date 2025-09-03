@@ -4,6 +4,7 @@ import About from "./components/About";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Blogs from "./components/post/Blog";
+import NotFound from "./components/404";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>

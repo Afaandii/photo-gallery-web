@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class PostsController extends Controller
 {
@@ -12,17 +13,20 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $post = Posts::all();
+        // remember(name_cache, times(jika habis maka reload), callback(func closure))
+        $post = Cache::remember('posts_all', now()->addMinutes(10), function () {
+            return Posts::select('id', 'title', 'image')->get()->toArray();
+        });
 
         if (!$post) {
-            return response()->json([
+            return json_encode([
                 'status' => 'Fail',
                 'message' => "Data post tidak ada",
             ], 503);
         }
 
-        return response()->json([
-            'status' => 'Success',
+        return json_encode([
+            'status' => 'Ok',
             'message' => 'Berhasil mengambil semua data post',
             'post' => $post,
         ], 200);

@@ -105,7 +105,7 @@ export default function About() {
             global.
           </p>
           <a
-            href="/upload"
+            href="http://localhost:8000/admin/login"
             className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-medium shadow-lg"
           >
             Mulai Unggah Foto
