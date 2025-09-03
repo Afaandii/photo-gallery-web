@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BlogsResource\Pages;
-use App\Filament\Resources\BlogsResource\RelationManagers;
 use App\Models\Blogs;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -17,7 +16,7 @@ class BlogsResource extends Resource
 {
     protected static ?string $model = Blogs::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
     {
@@ -60,5 +59,10 @@ class BlogsResource extends Resource
             'create' => Pages\CreateBlogs::route('/create'),
             'edit' => Pages\EditBlogs::route('/{record}/edit'),
         ];
+    }
+
+    public static function getModelLabel(): string
+    {
+        return "Blog Posts";
     }
 }
