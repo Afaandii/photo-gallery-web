@@ -2,49 +2,64 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoriesResource\Pages;
+use App\Filament\Resources\ImagePostsResource\Pages;
+use App\Filament\Resources\ImagePostsResource\RelationManagers;
 use App\Models\Categories;
+use App\Models\ImagePosts;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CategoriesResource extends Resource
+class ImagePostsResource extends Resource
 {
-    protected static ?string $model = Categories::class;
+    protected static ?string $model = ImagePosts::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                // live(untuk trigger ketika isi field input)
-                // afterStateUpdated(callback yang selalu dipanggil ketika nilai name berubah)
-                // $set(ini dari name dengan format slug nilainya dari $state)
-                TextInput::make('name')
-                    ->columnSpanFull()
-                    ->label('Name')
+                TextInput::make('title')
+                    ->label('Title')
                     ->required()
                     ->string()
+                    ->columnSpanFull()
                     ->live(onBlur: true)
                     ->afterStateUpdated(function (string $state, callable $set) {
                         $set('slug', Str::slug($state));
                     }),
                 TextInput::make('slug')
                     ->label('Slug')
-                    ->columnSpanFull()
-                    ->readOnly()
+                    ->string()
                     ->required()
-                    ->string(),
+                    ->readOnly()
+                    ->columnSpanFull(),
+                Select::make('category_id')
+                    ->label('Category')
+                    ->options(Categories::query()->pluck('name', 'id'))
+                    ->preload()
+                    ->searchable()
+                    ->columnSpanFull(),
                 RichEditor::make('deskripsi')
                     ->label('Deskripsi')
+                    ->string()
                     ->columnSpanFull(),
+                FileUpload::make('image')
+                    ->label('Image')
+                    ->disk('public')
+                    ->directory('image'),
             ]);
     }
 
@@ -52,9 +67,10 @@ class CategoriesResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('title'),
                 TextColumn::make('slug'),
                 TextColumn::make('deskripsi'),
+                ImageColumn::make('image')
             ])
             ->filters([
                 //
@@ -79,14 +95,9 @@ class CategoriesResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategories::route('/create'),
-            'edit' => Pages\EditCategories::route('/{record}/edit'),
+            'index' => Pages\ListImagePosts::route('/'),
+            'create' => Pages\CreateImagePosts::route('/create'),
+            'edit' => Pages\EditImagePosts::route('/{record}/edit'),
         ];
-    }
-
-    public static function getModelLabel(): string
-    {
-        return 'Category';
     }
 }
