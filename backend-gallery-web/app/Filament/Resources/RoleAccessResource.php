@@ -3,18 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\RoleAccessResource\Pages;
-use App\Filament\Resources\RoleAccessResource\RelationManagers;
-use App\Models\RoleAccess;
 use App\Models\Roles;
-use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class RoleAccessResource extends Resource
 {
@@ -50,6 +45,11 @@ class RoleAccessResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('permissions')
+                    ->icon('heroicon-o-key')
+                    ->label('Permission')
+                    ->color('warning')
+                    ->url(fn($record) => url('/admin/role-accesses/' . $record->id . '/permissions')),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -72,6 +72,7 @@ class RoleAccessResource extends Resource
             'index' => Pages\ListRoleAccesses::route('/'),
             'create' => Pages\CreateRoleAccess::route('/create'),
             'edit' => Pages\EditRoleAccess::route('/{record}/edit'),
+            'permissions' => Pages\ManageRoleAccess::route('/{record}/permissions'),
         ];
     }
 

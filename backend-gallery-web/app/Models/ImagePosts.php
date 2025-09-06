@@ -9,6 +9,8 @@ class ImagePosts extends Model
 {
     use HasFactory;
 
+    protected $table = 'image_posts';
+
     protected $fillable = [
         'title',
         'slug',
