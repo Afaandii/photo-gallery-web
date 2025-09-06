@@ -8,6 +8,7 @@ use App\Models\Roles;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
+use Illuminate\Contracts\Support\Htmlable;
 
 class ManageRoleAccess extends Page
 {
@@ -54,5 +55,12 @@ class ManageRoleAccess extends Page
                 ->success()
                 ->send();
         }
+
+        $this->redirect(request()->header('Referer'), navigate: true);
+    }
+
+    public function getTitle(): string|Htmlable
+    {
+        return 'Manage Role Permission';
     }
 }
