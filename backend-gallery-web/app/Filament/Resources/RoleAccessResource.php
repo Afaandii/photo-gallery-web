@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class RoleAccessResource extends Resource
 {
@@ -79,5 +80,10 @@ class RoleAccessResource extends Resource
     public static function getModelLabel(): string
     {
         return 'Role & Akses';
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('id', '!=', 1);
     }
 }
