@@ -6,6 +6,7 @@ use App\Filament\Resources\RoleAccessResource;
 use App\Models\Permissions;
 use App\Models\Roles;
 use Filament\Forms\Components\CheckboxList;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
 
 class ManageRoleAccess extends Page
@@ -26,12 +27,32 @@ class ManageRoleAccess extends Page
     // real-time toggle (dipanggil oleh wire:click di view)
     public function togglePermission(int $permissionId): void
     {
+        $permission = Permissions::find($permissionId);
+
+        if (! $permission) {
+            Notification::make()
+                ->title("Permission dengan ID {$permissionId} tidak ditemukan")
+                ->danger()
+                ->send();
+            return;
+        }
+
         if (in_array($permissionId, $this->permissions)) {
             $this->record->permissions()->detach($permissionId);
             $this->permissions = array_values(array_diff($this->permissions, [$permissionId]));
+
+            Notification::make()
+                ->title("Permission '{$permission->name}' dihapus")
+                ->danger()
+                ->send();
         } else {
             $this->record->permissions()->attach($permissionId);
             $this->permissions[] = $permissionId;
+
+            Notification::make()
+                ->title("Permission '{$permission->name}' ditambahkan")
+                ->success()
+                ->send();
         }
     }
 }
