@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use Filament\Pages\Auth\Register;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,6 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return redirect('/admin/login');
 });
+Route::get('/register', Register::class)
+    ->name('filament.auth.register')
+    ->middleware(['web', 'guest']);
