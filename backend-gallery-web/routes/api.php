@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogPostsController;
 use App\Http\Controllers\ImagePostsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group([], function () {
+    // image posts
     Route::get('/posts', [ImagePostsController::class, 'index']);
+
+    // blog posts
+    Route::get('/blogs', [BlogPostsController::class, 'index']);
 });
 
 //route login register
