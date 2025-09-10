@@ -1,10 +1,32 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
+import { useEffect, useState } from "react";
 import Footer from "../Footer";
 import Navigasi from "../Navigasi";
 
 export default function Blogs() {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/api/blogs");
+
+        if (!res.ok) {
+          throw Error(`HTTP Status Error ${res.status}`);
+        }
+
+        let data = await res.json();
+        setBlogs(data.blog);
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchBlog();
+  }, []);
+
   return (
     <>
       <section className="w-full h-full mb-3">
@@ -24,58 +46,25 @@ export default function Blogs() {
           </div>
           <div className="flex flex-col lg:flex-row gap-6">
             {/* Card 1 */}
-            <div className="flex flex-col rounded-xl shadow-md overflow-hidden bg-white border w-full lg:w-1/3">
-              <img
-                src="https://cdn.pixabay.com/photo/2025/02/06/17/42/snow-9388109_1280.jpg"
-                alt="Top 20 Images"
-                className="w-full h-60 object-cover"
-              />
-              <div className="p-4 flex flex-col gap-1">
-                <p className="text-sm text-gray-500">Community</p>
-                <h2 className="font-bold text-lg">
-                  Top 20 Images from July 2025
-                </h2>
-                <p className="text-sm text-gray-600">
-                  Alyssa Wright · August 12, 2025
-                </p>
+            {blogs.map((blog, index) => (
+              <div
+                key={index}
+                className="flex flex-col rounded-xl shadow-md overflow-hidden bg-white border w-full lg:w-1/3"
+              >
+                <img
+                  src={`http://localhost:8000/storage/${blog.image}`}
+                  alt="Top 20 Images"
+                  className="w-full h-60 object-cover"
+                />
+                <div className="p-4 flex flex-col gap-1">
+                  <p className="text-sm text-gray-500">{blog.category.name}</p>
+                  <h2 className="font-bold text-lg">{blog.title}</h2>
+                  <p className="text-sm text-gray-600">
+                    {new Date(blog.created_at).toISOString().split("T")[0]}
+                  </p>
+                </div>
               </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="flex flex-col rounded-xl shadow-md overflow-hidden bg-white border w-full lg:w-1/3">
-              <img
-                src="https://cdn.pixabay.com/photo/2025/02/06/17/42/snow-9388109_1280.jpg"
-                alt="Canada"
-                className="w-full h-60 object-cover"
-              />
-              <div className="p-4 flex flex-col gap-1">
-                <p className="text-sm text-gray-500">Community</p>
-                <h2 className="font-bold text-lg">
-                  Unsplash Around the World: Canada
-                </h2>
-                <p className="text-sm text-gray-600">
-                  Alyssa Wright · July 16, 2025
-                </p>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="flex flex-col rounded-xl shadow-md overflow-hidden bg-white border w-full lg:w-1/3">
-              <img
-                src="https://cdn.pixabay.com/photo/2025/02/06/17/42/snow-9388109_1280.jpg"
-                alt="Top 20 Images on Unsplash"
-                className="w-full h-60 object-cover"
-              />
-              <div className="p-4 flex flex-col gap-1">
-                <p className="text-sm text-gray-500">Community</p>
-                <h2 className="font-bold text-lg">
-                  Top 20 Images on Unsplash from June 2025
-                </h2>
-                <p className="text-sm text-gray-600">
-                  Alyssa Wright · July 8, 2025
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
