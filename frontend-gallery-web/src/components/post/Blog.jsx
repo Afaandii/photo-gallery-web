@@ -60,6 +60,7 @@ export default function Blogs() {
                   <p className="text-sm text-gray-500">{blog.category.name}</p>
                   <h2 className="font-bold text-lg">{blog.title}</h2>
                   <p className="text-sm text-gray-600">
+                    {blog.user.name} ·{" "}
                     {new Date(blog.created_at).toISOString().split("T")[0]}
                   </p>
                 </div>
