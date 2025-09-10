@@ -27,6 +27,7 @@ Route::group([], function () {
 
     // blog posts
     Route::get('/blogs', [BlogPostsController::class, 'index']);
+    Route::get('/blog/{slug}', [BlogPostsController::class, 'show']);
 });
 
 //route login register
