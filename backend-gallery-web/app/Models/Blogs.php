@@ -20,4 +20,9 @@ class Blogs extends Model
         'content',
         'image',
     ];
+
+    public function Category()
+    {
+        return $this->belongsTo(Categories::class, 'category_id');
+    }
 }
