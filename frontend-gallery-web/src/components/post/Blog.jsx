@@ -1,9 +1,9 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
 import { useEffect, useState } from "react";
 import Footer from "../Footer";
 import Navigasi from "../Navigasi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -63,6 +63,17 @@ export default function Blogs() {
                     {blog.user.name} ·{" "}
                     {new Date(blog.created_at).toISOString().split("T")[0]}
                   </p>
+                  <Link
+                    key={index}
+                    to={`/blog/${blog.slug}`}
+                    state={{ blog }}
+                    className="text-blue-500 text-sm mt-2 inline-flex items-center group"
+                  >
+                    Read More
+                    <span className="transform ml-1 transition-transform duration-300 group-hover:translate-x-1">
+                      <FontAwesomeIcon icon={faArrowRight} />
+                    </span>
+                  </Link>
                 </div>
               </div>
             ))}
