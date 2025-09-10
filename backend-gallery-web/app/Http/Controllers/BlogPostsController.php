@@ -17,7 +17,7 @@ class BlogPostsController extends Controller
         if (!$blog) {
             return json_encode([
                 'status' => 'Fail',
-                'message' => "Data post tidak ada",
+                'message' => "Data Blog tidak ada",
             ], 503);
         }
 
@@ -26,5 +26,14 @@ class BlogPostsController extends Controller
             'message' => 'Success get all data blog posts',
             'blog' => $blog
         ]);
+    }
+
+    public function show($slug)
+    {
+        $blog = Blogs::with(['Category:id,name', 'User:id,name'])
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        return json_encode($blog);
     }
 }
