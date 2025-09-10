@@ -11,7 +11,7 @@ class BlogPostsController extends Controller
     public function index()
     {
         $blog = Cache::remember('blog_all', now()->addMinutes(10), function () {
-            return Blogs::with('Category:id,name')->select('title', 'slug', 'excerpt', 'content', 'image', 'created_at', 'category_id')->get()->toArray();
+            return Blogs::with('Category:id,name')->with('User:id,name')->select('title', 'slug', 'excerpt', 'content', 'image', 'created_at', 'category_id', 'user_id')->get()->toArray();
         });
 
         if (!$blog) {
