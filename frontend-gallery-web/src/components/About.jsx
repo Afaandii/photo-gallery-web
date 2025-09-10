@@ -13,7 +13,7 @@ export default function About() {
             Tempat berbagi foto, inspirasi, dan cerita dari seluruh dunia
           </p>
           <a
-            href="/gallery"
+            href="/explore"
             className="btn btn-outline btn-primary !text-white w-[150px] hover:scale-110 duration-500"
           >
             Jelajahi Galeri
