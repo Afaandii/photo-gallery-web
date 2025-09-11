@@ -52,9 +52,22 @@ class ImagePostsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $imagePost = ImagePosts::where('slug', $slug)->first();
+
+        if (!$imagePost) {
+            return json_encode([
+                'status' => 'Fail',
+                'message' => 'Image post not found!'
+            ], 404);
+        }
+
+        return json_encode([
+            'status' => 'Ok',
+            'message' => 'Get data image posts success!',
+            'image_post' => $imagePost
+        ], 200);
     }
 
     /**

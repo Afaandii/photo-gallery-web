@@ -23,7 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group([], function () {
     // image posts
-    Route::get('/posts', [ImagePostsController::class, 'index']);
+    Route::get('/image-posts', [ImagePostsController::class, 'index']);
+    Route::get('/image-posts/{slug}', [ImagePostsController::class, 'show']);
 
     // blog posts
     Route::get('/blogs', [BlogPostsController::class, 'index']);
