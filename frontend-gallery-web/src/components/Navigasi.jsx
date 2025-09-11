@@ -33,7 +33,7 @@ export default function Navigasi() {
         {/* Logo */}
         <div className="avatar">
           <div className="lg:w-[250px] w-[150px] h-8 -ml-10 mt-3 lg:h-14 lg:mt-3 lg:ml-3">
-            <img src="./src/assets/img/nav-logo.png" />
+            <img src="/assets/img/nav-logo.png" />
           </div>
         </div>
 
@@ -110,7 +110,7 @@ export default function Navigasi() {
             onClick={() =>
               (document.location.href = "http://localhost:8000/admin")
             }
-            className="btn btn-outline btn-error px-6 hover:scale-110 duration-500"
+            className="btn btn-outline lg:mr-10 btn-error px-6 hover:scale-110 duration-500"
           >
             Login <FontAwesomeIcon icon={faArrowRightToBracket} />
           </a>
