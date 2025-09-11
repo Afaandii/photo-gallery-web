@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import Footer from "./Footer";
 import Navigasi from "./Navigasi";
-import Card from "./Card";
+import ImagePosts from "./post/ImagePosts";
 
 export default function Home() {
   const cardRef = useRef(null);
@@ -34,7 +34,7 @@ export default function Home() {
       </div>
 
       <div ref={cardRef}>
-        <Card />
+        <ImagePosts />
       </div>
       <div>
         <Footer />
