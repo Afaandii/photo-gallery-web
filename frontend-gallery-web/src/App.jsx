@@ -7,6 +7,8 @@ import Blogs from "./components/post/Blog";
 import NotFound from "./components/404";
 import ShowBlog from "./components/post/ShowBlog";
 import ShowImagePosts from "./components/post/ShowImagePosts";
+import CategoryImagePosts from "./components/post/CategoryImagePosts";
+import ImagePostsByCategory from "./components/post/ImagePOstByCategory";
 
 function App() {
   return (
@@ -20,6 +22,11 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/blog/:slug" element={<ShowBlog />} />
           <Route path="/image-posts/:slug" element={<ShowImagePosts />} />
+          <Route path="/explore" element={<CategoryImagePosts />} />
+          <Route
+            path="/image-post/category/:slug"
+            element={<ImagePostsByCategory />}
+          />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
