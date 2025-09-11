@@ -25,6 +25,7 @@ Route::group([], function () {
     // image posts
     Route::get('/image-posts', [ImagePostsController::class, 'index']);
     Route::get('/image-posts/{slug}', [ImagePostsController::class, 'show']);
+    Route::get('/image-posts-download/{slug}', [ImagePostsController::class, 'download']);
 
     // blog posts
     Route::get('/blogs', [BlogPostsController::class, 'index']);
