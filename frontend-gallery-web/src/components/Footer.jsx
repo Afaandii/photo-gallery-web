@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="footer sm:footer-horizontal">
           <aside>
             <img
-              src="./src/assets/img/logo-text-dark.png"
+              src="/assets/img/logo-text-dark.png"
               alt="footer-logo"
               className="w-[150px] h-[85px]"
             />

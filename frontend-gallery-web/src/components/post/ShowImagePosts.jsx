@@ -5,8 +5,10 @@ import { Download, ArrowLeft } from "lucide-react";
 export default function ShowImagePosts() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchPost = async () => {
       try {
         const res = await fetch(
@@ -17,13 +19,41 @@ export default function ShowImagePosts() {
         setPost(data.image_post);
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchPost();
   }, [slug]);
 
+  // Skeleton loading
+  if (loading) {
+    return (
+      <section className="max-w-5xl mx-auto px-4 py-8 animate-pulse">
+        <div className="h-6 w-32 bg-gray-300 rounded mb-6"></div>
+
+        <div className="bg-white shadow-xl rounded-2xl overflow-hidden">
+          <div className="w-full h-[400px] bg-gray-300"></div>
+
+          <div className="p-6 space-y-4">
+            <div className="h-8 w-2/3 bg-gray-300 rounded"></div>
+            <div className="h-4 w-full bg-gray-300 rounded"></div>
+            <div className="h-4 w-5/6 bg-gray-300 rounded"></div>
+            <div className="h-4 w-1/2 bg-gray-300 rounded"></div>
+            <div className="h-4 w-40 bg-gray-300 rounded"></div>
+            <div className="h-10 w-48 bg-gray-300 rounded"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   if (!post) {
-    return <p className="text-center mt-10">Loading...</p>;
+    return (
+      <p className="text-center mt-10 text-red-500 font-semibold">
+        Data tidak ditemukan
+      </p>
+    );
   }
 
   return (
