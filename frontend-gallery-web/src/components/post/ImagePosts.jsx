@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function Card() {
+export default function ImagePosts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await fetch("http://localhost:8000/api/posts");
+        const res = await fetch("http://localhost:8000/api/image-posts");
 
         if (!res.ok) {
           throw Error(`HTTP Error Status: ${res.status}`);
@@ -31,13 +32,13 @@ export default function Card() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {posts.map((post, index) => (
             <div key={index} className="overflow-hidden rounded-xl shadow-lg">
-              <a href="/">
+              <Link to={`/image-posts/${post.slug}`}>
                 <img
                   src={`http://localhost:8000/storage/${post.image}`}
                   alt="Leaves with snow"
                   className="w-full h-[500px] object-cover"
                 />
-              </a>
+              </Link>
             </div>
           ))}
         </div>
