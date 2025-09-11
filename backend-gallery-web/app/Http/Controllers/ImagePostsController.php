@@ -16,7 +16,7 @@ class ImagePostsController extends Controller
     {
         // remember(name_cache, times(jika habis maka reload), callback(func closure))
         $post = Cache::remember('posts_all', now()->addMinutes(10), function () {
-            return ImagePosts::select('id', 'title', 'image')->get()->toArray();
+            return ImagePosts::select('id', 'title', 'slug', 'deskripsi', 'image')->get()->toArray();
         });
 
         if (!$post) {
@@ -54,7 +54,7 @@ class ImagePostsController extends Controller
      */
     public function show(string $slug)
     {
-        $imagePost = ImagePosts::where('slug', $slug)->first();
+        $imagePost = ImagePosts::with(['Category:id,name', 'User:id,name'])->where('slug', $slug)->first();
 
         if (!$imagePost) {
             return json_encode([
@@ -92,5 +92,13 @@ class ImagePostsController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function download($slug)
+    {
+        $post = ImagePosts::where('slug', $slug)->firstOrFail();
+        $filePath = storage_path('app/public/' . $post->image);
+
+        return response()->download($filePath, $post->title . '.' . pathinfo($filePath, PATHINFO_EXTENSION));
     }
 }
