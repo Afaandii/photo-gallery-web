@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\ImagePosts;
 use App\Models\Posts;
 use Illuminate\Http\Request;
@@ -100,5 +101,18 @@ class ImagePostsController extends Controller
         $filePath = storage_path('app/public/' . $post->image);
 
         return response()->download($filePath, $post->title . '.' . pathinfo($filePath, PATHINFO_EXTENSION));
+    }
+
+    public function byCategory($slug)
+    {
+        $category = Categories::where('slug', $slug)->firstOrFail();
+
+        $posts = ImagePosts::where('category_id', $category->id)->get();
+
+        return json_encode([
+            'status' => 'Ok',
+            'category' => $category,
+            'image_posts' => $posts
+        ]);
     }
 }
