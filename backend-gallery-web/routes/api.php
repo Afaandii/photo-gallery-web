@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogPostsController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ImagePostsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,10 +27,14 @@ Route::group([], function () {
     Route::get('/image-posts', [ImagePostsController::class, 'index']);
     Route::get('/image-posts/{slug}', [ImagePostsController::class, 'show']);
     Route::get('/image-posts-download/{slug}', [ImagePostsController::class, 'download']);
+    Route::get('/image-posts/category/{slug}', [ImagePostsController::class, 'byCategory']);
 
     // blog posts
     Route::get('/blogs', [BlogPostsController::class, 'index']);
     Route::get('/blog/{slug}', [BlogPostsController::class, 'show']);
+
+    // category
+    Route::get('/categories', [CategoryController::class, 'index']);
 });
 
 //route login register
