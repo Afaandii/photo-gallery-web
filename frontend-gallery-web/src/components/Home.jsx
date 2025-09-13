@@ -15,7 +15,7 @@ export default function Home() {
       <div className="hero w-screen h-[100vh] flex flex-col">
         <Navigasi />
 
-        <div className="flex flex-col justify-center items-center h-full gap-5 bg-opacity-50 bg-black w-full">
+        <div className="flex flex-col justify-center items-center h-full gap-5  bg-black/70 w-full">
           <h1 className="font-bold text-center text-slate-400 lg:text-5xl text-4xl">
             Selamat Datang Di
           </h1>

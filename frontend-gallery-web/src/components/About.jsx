@@ -5,7 +5,7 @@ export default function About() {
     <>
       <div className="hero w-screen h-[100vh] flex flex-col">
         <Navigasi />
-        <div className="h-full flex flex-col justify-center items-center text-slate-400 text-center px-4 bg-opacity-50 bg-black w-full">
+        <div className="h-full flex flex-col justify-center items-center text-slate-400 text-center px-4 bg-black/70 w-full">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Kreativitas Tanpa Batas
           </h1>
