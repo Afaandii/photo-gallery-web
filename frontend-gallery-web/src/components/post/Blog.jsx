@@ -34,7 +34,7 @@ export default function Blogs() {
       <section className="w-full h-full mb-3">
         <div className="hero w-screen h-auto flex flex-col">
           <Navigasi />
-          <div className="h-full flex flex-col justify-center items-center text-slate-400 text-center px-4 bg-opacity-50 bg-black w-full">
+          <div className="h-full flex flex-col justify-center items-center text-slate-400 text-center px-4 bg-black/70 w-full">
             <h1 className="text-center text-5xl font-bold">PixFlow Blog</h1>
             <p className="text-2xl mt-4">
               Temukan Beberapa Blog yang dibuat dari komunitas kami

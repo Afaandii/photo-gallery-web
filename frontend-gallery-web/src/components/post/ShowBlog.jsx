@@ -29,9 +29,9 @@ export default function ShowBlog() {
 
   return (
     <section className="w-full h-full">
-      <div className="hero w-screen h-auto flex flex-col">
+      <div className="show-detil w-screen h-auto flex flex-col">
         <Navigasi />
-        <div className="h-full flex flex-col justify-center items-center text-slate-400 text-center px-4 bg-opacity-50 bg-black w-full">
+        <div className="h-full flex flex-col justify-center items-center text-slate-400 text-center px-4 bg-black/70 w-full pt-20">
           <p className="text-gray-300 mb-6 text-xl lg:text-3xl">
             {blog.user?.name} ·{" "}
             {new Date(blog.created_at).toLocaleDateString("en-US", {
