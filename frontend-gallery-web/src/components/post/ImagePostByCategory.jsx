@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Navigasi from "../Navigasi";
 import Footer from "../Footer";
@@ -107,7 +107,7 @@ export default function ImagePostsByCategory() {
             </h2>
 
             <p className="text-gray-500 mb-6">
-              Sepertinya kategori ini belum memiliki gambar. Coba jelajahi
+              Ups! Sepertinya kategori ini belum memiliki gambar. Coba jelajahi
               kategori lainnya!
             </p>
 
@@ -121,21 +121,20 @@ export default function ImagePostsByCategory() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {posts.map((post) => (
-              <div
-                key={post.id}
-                className="relative group rounded-lg overflow-hidden shadow-lg"
-              >
-                <img
-                  src={`http://localhost:8000/storage/${post.image}`}
-                  alt={post.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-4 text-white">
-                    <h2 className="text-lg font-semibold">{post.title}</h2>
+              <Link key={post.id} to={`/image-posts/${post.slug}`}>
+                <div className="relative group rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src={`http://localhost:8000/storage/${post.image}`}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div className="p-4 text-white">
+                      <h2 className="text-lg font-semibold">{post.title}</h2>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}
