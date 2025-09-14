@@ -14,6 +14,15 @@ return [
     |
     */
 
+    'auth' => [
+        'guard' => 'web',
+
+        'pages' => [
+            'login'    => \App\Filament\Pages\Auth\Login::class,
+            'register' => \App\Filament\Pages\Auth\Register::class,
+        ],
+    ],
+
     'broadcasting' => [
 
         // 'echo' => [

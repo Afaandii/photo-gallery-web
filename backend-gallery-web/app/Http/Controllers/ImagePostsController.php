@@ -56,6 +56,9 @@ class ImagePostsController extends Controller
     public function show(string $slug)
     {
         $imagePost = ImagePosts::with(['Category:id,name', 'User:id,name'])->where('slug', $slug)->first();
+        $related_image_post = ImagePosts::where('category_id', $imagePost->category_id)->where('slug', '!=', $slug) //supaya tidak muncul data yang buat detail tadi
+            ->take(12)
+            ->get();
 
         if (!$imagePost) {
             return json_encode([
@@ -67,7 +70,8 @@ class ImagePostsController extends Controller
         return json_encode([
             'status' => 'Ok',
             'message' => 'Get data image posts success!',
-            'image_post' => $imagePost
+            'image_post' => $imagePost,
+            'related_image_post' => $related_image_post,
         ], 200);
     }
 

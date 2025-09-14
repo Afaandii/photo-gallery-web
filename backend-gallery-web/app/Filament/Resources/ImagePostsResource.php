@@ -69,7 +69,7 @@ class ImagePostsResource extends Resource
             ->columns([
                 TextColumn::make('title'),
                 TextColumn::make('slug'),
-                TextColumn::make('deskripsi'),
+                TextColumn::make('deskripsi')->wrap(),
                 ImageColumn::make('image')
             ])
             ->filters([
