@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Download, Heart, Share2 } from "lucide-react";
 import Navigasi from "../Navigasi";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Footer";
@@ -297,22 +297,24 @@ export default function ShowImagePosts() {
                 {relatedImagePost.length > 0 ? (
                   <>
                     {relatedImagePost.map((post, idx) => (
-                      <div key={idx} className="group cursor-pointer">
-                        <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                          <div className="relative overflow-hidden">
-                            <img
-                              src={`http://localhost:8000/storage/${post.image}`}
-                              alt={post.title}
-                              className="w-full h- object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
-                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                              <h3 className="text-white font-medium text-sm p-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                {post.title}
-                              </h3>
+                      <Link key={idx} to={`/image-posts/${post.slug}`}>
+                        <div className="group cursor-pointer">
+                          <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div className="relative overflow-hidden">
+                              <img
+                                src={`http://localhost:8000/storage/${post.image}`}
+                                alt={post.title}
+                                className="w-full h- object-cover group-hover:scale-110 transition-transform duration-500"
+                              />
+                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <h3 className="text-white font-medium text-sm p-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                  {post.title}
+                                </h3>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </>
                 ) : (
