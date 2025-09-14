@@ -7,36 +7,36 @@ import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Footer";
 
 // dummy data related post
-const relatedImages = [
-  {
-    id: 1,
-    title: "Urban Architecture",
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop",
-    slug: "urban-architecture",
-  },
-  {
-    id: 2,
-    title: "Modern Interior",
-    image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop",
-    slug: "modern-interior",
-  },
-  {
-    id: 3,
-    title: "Nature Landscape",
-    image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop",
-    slug: "nature-landscape",
-  },
-  {
-    id: 4,
-    title: "Street Photography",
-    image:
-      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=300&h=200&fit=crop",
-    slug: "street-photography",
-  },
-];
+// const relatedImages = [
+//   {
+//     id: 1,
+//     title: "Urban Architecture",
+//     image:
+//       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop",
+//     slug: "urban-architecture",
+//   },
+//   {
+//     id: 2,
+//     title: "Modern Interior",
+//     image:
+//       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop",
+//     slug: "modern-interior",
+//   },
+//   {
+//     id: 3,
+//     title: "Nature Landscape",
+//     image:
+//       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop",
+//     slug: "nature-landscape",
+//   },
+//   {
+//     id: 4,
+//     title: "Street Photography",
+//     image:
+//       "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=300&h=200&fit=crop",
+//     slug: "street-photography",
+//   },
+// ];
 
 export default function ShowImagePosts() {
   const { slug } = useParams();
@@ -44,6 +44,7 @@ export default function ShowImagePosts() {
   const [loading, setLoading] = useState(true);
   const [liked, setLiked] = useState(false);
   const imageContentRef = useRef(null);
+  const [relatedImagePost, setRelatedImagePost] = useState([]);
 
   const handleScroll = () => {
     imageContentRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -75,6 +76,7 @@ export default function ShowImagePosts() {
         if (!res.ok) throw Error(`HTTP Error Status: ${res.status}`);
         let data = await res.json();
         setPost(data.image_post);
+        setRelatedImagePost(data.related_image_post);
       } catch (err) {
         console.log(err);
       } finally {
@@ -172,24 +174,16 @@ export default function ShowImagePosts() {
     );
   }
 
-  if (!post) {
-    return (
-      <p className="text-center mt-10 text-red-500 font-semibold">
-        Data tidak ditemukan
-      </p>
-    );
-  }
-
   return (
     <section className="h-full w-full">
       {/* navbar */}
       <div className="show-detil w-screen h-auto flex flex-col">
         <Navigasi />
         <div className="h-full flex flex-col justify-center items-center text-slate-400 text-center px-4 bg-black/70 w-full pt-20">
-          <h1 className="text-center text-2xl lg:text-3xl font-bold">
+          <h1 className="text-center text-2xl lg:text-2xl font-bold">
             Detail Image Posts
           </h1>
-          <h5 className="mt-3 text-center font-medium text-2xl lg:text-4xl">
+          <h5 className="mt-3 text-center font-medium text-2xl lg:text-5xl">
             {post.title}
           </h5>
 
@@ -202,116 +196,138 @@ export default function ShowImagePosts() {
         </div>
       </div>
       {/* navbar end */}
-
-      {/* detail image */}
-      <div className="w-full h-full flex flex-col lg:flex-row justify-evenly items-center mx-auto px-4 py-8">
-        <div
-          ref={imageContentRef}
-          className="bg-white shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
-        >
-          <img
-            src={`http://localhost:8000/storage/${post.image}`}
-            alt={post.title}
-            className="w-full max-h-[600px] object-cover bg-gray-100 hover:scale-105 transition-transform duration-500"
-          />
-        </div>
-
-        <div className="p-6 max-w-md">
-          {/* User Profile - DITAMBAHKAN DI ATAS TITLE */}
-          <div className="flex items-center gap-3 mb-4 p-3 bg-gray-50 rounded-xl border border-gray-200">
-            <img
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
-              alt="afandi"
-              className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-200"
-            />
-            <div>
-              <h3 className="font-semibold text-gray-800 text-sm">Afandi</h3>
-              <p className="text-xs text-gray-500">Author</p>
-            </div>
-          </div>
-
-          <h1 className="text-3xl font-bold text-gray-800 mb-4">
-            {post.title}
-          </h1>
-
-          <div
-            className="text-gray-700 leading-relaxed mb-4"
-            dangerouslySetInnerHTML={{ __html: post.deskripsi }}
-          />
-
-          <p className="mt-3 text-sm text-gray-500 mb-4">
-            Diposting pada:{" "}
-            {new Date(post.created_at).toLocaleDateString("id-ID", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
+      {!post ? (
+        <div className="flex justify-center items-center py-20">
+          <p className="text-red-500 font-semibold text-lg">
+            Data tidak ditemukan
           </p>
-
-          {/* Action Buttons */}
-          <div className="flex items-center gap-2 mb-4">
-            <button
-              onClick={handleLike}
-              className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm transition-all ${
-                liked
-                  ? "bg-red-500 text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-red-50"
-              }`}
-            >
-              <Heart className={`w-4 h-4 ${liked ? "fill-current" : ""}`} />
-              Like
-            </button>
-
-            <button
-              onClick={handleShare}
-              className="flex items-center gap-1 px-3 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-all text-sm"
-            >
-              <Share2 className="w-4 h-4" />
-              Share
-            </button>
-          </div>
-
-          <a
-            href={`http://localhost:8000/api/image-posts-download/${post.slug}`}
-            download
-            className="inline-flex items-center gap-2 mt-2 px-5 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-1"
-          >
-            <Download className="w-5 h-5" />
-            Download Foto
-          </a>
         </div>
-      </div>
-      {/* detail image end */}
+      ) : (
+        <>
+          {/* detail image */}
+          <div className="w-full h-full flex flex-col lg:flex-row justify-evenly items-center mx-auto px-4 py-8">
+            <div
+              ref={imageContentRef}
+              className="bg-white shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+            >
+              <img
+                src={`http://localhost:8000/storage/${post.image}`}
+                alt={post.title}
+                className="w-full max-h-[600px] object-cover bg-gray-100 hover:scale-105 transition-transform duration-500"
+              />
+            </div>
 
-      {/* Related Images Section */}
-      <div className="w-full bg-gray-50 py-12 mt-8">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">
-            Gambar Terkait
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedImages.map((image) => (
-              <div key={image.id} className="group cursor-pointer">
-                <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={image.image}
-                      alt={image.title}
-                      className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                      <h3 className="text-white font-medium text-sm p-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                        {image.title}
-                      </h3>
-                    </div>
-                  </div>
+            <div className="p-6 max-w-md">
+              {/* User Profile - DITAMBAHKAN DI ATAS TITLE */}
+              <div className="flex items-center gap-3 mb-4 p-3 bg-gray-50 rounded-xl border border-gray-200">
+                <img
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
+                  alt="afandi"
+                  className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-200"
+                />
+                <div>
+                  <h3 className="font-semibold text-gray-800 text-sm">
+                    Afandi
+                  </h3>
+                  <p className="text-xs text-gray-500">Author</p>
                 </div>
               </div>
-            ))}
+
+              <h1 className="text-3xl font-bold text-gray-800 mb-4">
+                {post.title}
+              </h1>
+
+              <div
+                className="text-gray-700 leading-relaxed mb-4"
+                dangerouslySetInnerHTML={{ __html: post.deskripsi }}
+              />
+
+              <p className="mt-3 text-sm text-gray-500 mb-4">
+                Diposting pada:{" "}
+                {new Date(post.created_at).toLocaleDateString("id-ID", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2 mb-4">
+                <button
+                  onClick={handleLike}
+                  className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm transition-all ${
+                    liked
+                      ? "bg-red-500 text-white"
+                      : "bg-gray-100 text-gray-600 hover:bg-red-50"
+                  }`}
+                >
+                  <Heart className={`w-4 h-4 ${liked ? "fill-current" : ""}`} />
+                  Like
+                </button>
+
+                <button
+                  onClick={handleShare}
+                  className="flex items-center gap-1 px-3 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-all text-sm"
+                >
+                  <Share2 className="w-4 h-4" />
+                  Share
+                </button>
+              </div>
+
+              <a
+                href={`http://localhost:8000/api/image-posts-download/${post.slug}`}
+                download
+                className="inline-flex items-center gap-2 mt-2 px-5 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-1"
+              >
+                <Download className="w-5 h-5" />
+                Download Foto
+              </a>
+            </div>
           </div>
-        </div>
-      </div>
+          {/* detail image end */}
+
+          {/* related image */}
+          <div className="w-full bg-gray-50 py-12 mt-8">
+            <div className="max-w-6xl mx-auto px-4">
+              <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">
+                Gambar Terkait
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {relatedImagePost.length > 0 ? (
+                  <>
+                    {relatedImagePost.map((post, idx) => (
+                      <div key={idx} className="group cursor-pointer">
+                        <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                          <div className="relative overflow-hidden">
+                            <img
+                              src={`http://localhost:8000/storage/${post.image}`}
+                              alt={post.title}
+                              className="w-full h- object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                              <h3 className="text-white font-medium text-sm p-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                {post.title}
+                              </h3>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                ) : (
+                  <div className="col-span-full flex justify-center items-center">
+                    <p className="text-red-500 text-3xl font-bold text-center">
+                      Tidak Ada Data Yang Relate
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          {/* related image end */}
+        </>
+      )}
       <Footer />
     </section>
   );
