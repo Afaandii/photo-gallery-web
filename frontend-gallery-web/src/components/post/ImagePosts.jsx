@@ -27,7 +27,7 @@ export default function ImagePosts() {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-[18px] font-bold mb-5">
+      <h1 className="text-[14px] lg:text-[18px] font-bold mb-5">
         Temukan lebih dari 1 juta gambar yang dibagikan atau diabadikan dari
         beberapa orang.
       </h1>
@@ -45,17 +45,30 @@ export default function ImagePosts() {
       ) : (
         // data
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {posts.map((post, index) => (
-            <div key={index} className="overflow-hidden rounded-xl shadow-lg">
-              <Link to={`/image-posts/${post.slug}`}>
-                <img
-                  src={`http://localhost:8000/storage/${post.image}`}
-                  alt={post.title || "image post"}
-                  className="w-full h-[500px] object-cover"
-                />
-              </Link>
+          {posts && posts.length > 0 ? (
+            <>
+              {posts.map((post, index) => (
+                <div
+                  key={index}
+                  className="overflow-hidden rounded-xl shadow-lg"
+                >
+                  <Link to={`/image-posts/${post.slug}`}>
+                    <img
+                      src={`http://localhost:8000/storage/${post.image}`}
+                      alt={post.title || "image post"}
+                      className="w-full h-[500px] object-cover"
+                    />
+                  </Link>
+                </div>
+              ))}
+            </>
+          ) : (
+            <div className="col-span-full flex justify-center items-center">
+              <p className="text-red-500 text-xl lg:text-3xl font-bold text-center">
+                Tidak Ada Data Photo Yang Di Post
+              </p>
             </div>
-          ))}
+          )}
         </div>
       )}
     </section>
