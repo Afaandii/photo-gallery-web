@@ -19,6 +19,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BlogsResource extends Resource
@@ -109,5 +110,23 @@ class BlogsResource extends Resource
     public static function getModelLabel(): string
     {
         return 'Blog Posts';
+    }
+
+    // user access permission dashboard
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasPermission('show-app');
+    }
+    public static function canCreate(): bool
+    {
+        return auth()->user()->hasPermission('create-app');
+    }
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->hasPermission('edit-app');
+    }
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->hasPermission('delete-app');
     }
 }

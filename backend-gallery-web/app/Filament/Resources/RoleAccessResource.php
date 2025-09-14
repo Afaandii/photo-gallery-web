@@ -11,6 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class RoleAccessResource extends Resource
 {
@@ -50,7 +51,8 @@ class RoleAccessResource extends Resource
                     ->icon('heroicon-o-key')
                     ->label('Permission')
                     ->color('warning')
-                    ->url(fn($record) => url('/admin/role-accesses/' . $record->id . '/permissions')),
+                    ->url(fn($record) => url('/admin/role-accesses/' . $record->id . '/permissions'))
+                    ->visible(fn() => auth()->user()->role_id === 1),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -85,5 +87,23 @@ class RoleAccessResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('id', '!=', 1);
+    }
+
+    // permission access user dashboard
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasPermission('show-app');
+    }
+    public static function canCreate(): bool
+    {
+        return auth()->user()->hasPermission('create-app');
+    }
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->hasPermission('edit-app');
+    }
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->hasPermission('delete-app');
     }
 }
