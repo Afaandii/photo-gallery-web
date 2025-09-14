@@ -41,6 +41,9 @@ export default function ImagePostsByCategory() {
       <div className="show-detil w-screen h-auto flex flex-col">
         <Navigasi />
         <div className="h-full flex flex-col justify-center items-center text-slate-400 text-center px-4 bg-black/70 w-full pt-20">
+          <h3 className="text-2xl text-center mb-2 font-semibold">
+            Photo Dengan Kategori
+          </h3>
           {loading ? (
             <div className="h-10 w-64 bg-gray-500 rounded animate-pulse"></div>
           ) : posts.length > 0 ? (
@@ -53,7 +56,7 @@ export default function ImagePostsByCategory() {
 
           <a
             onClick={handleScroll}
-            className="mt-16 text-gray-300 cursor-pointer hover:text-white transition transform hover:translate-y-1"
+            className="mt-12 text-gray-300 cursor-pointer hover:text-white transition transform hover:translate-y-1"
           >
             <FontAwesomeIcon icon={faArrowDown} size="2x" />
           </a>
