@@ -12,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class CategoriesResource extends Resource
@@ -54,7 +55,7 @@ class CategoriesResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 TextColumn::make('slug'),
-                TextColumn::make('deskripsi'),
+                TextColumn::make('deskripsi')->wrap(),
             ])
             ->filters([
                 //
@@ -88,5 +89,23 @@ class CategoriesResource extends Resource
     public static function getModelLabel(): string
     {
         return 'Category';
+    }
+
+    // permission access user dashboard
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasPermission('show-app');
+    }
+    public static function canCreate(): bool
+    {
+        return auth()->user()->hasPermission('create-app');
+    }
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->hasPermission('edit-app');
+    }
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->hasPermission('delete-app');
     }
 }

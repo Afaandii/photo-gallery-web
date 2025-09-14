@@ -46,4 +46,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Cek apakah user punya permission tertentu
+     */
+    public function hasPermission(string $permission): bool
+    {
+        return $this->role->permissions->contains('name', $permission);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Roles::class, 'role_id');
+    }
 }

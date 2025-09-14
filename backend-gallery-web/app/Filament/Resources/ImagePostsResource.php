@@ -19,6 +19,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ImagePostsResource extends Resource
@@ -99,5 +100,23 @@ class ImagePostsResource extends Resource
             'create' => Pages\CreateImagePosts::route('/create'),
             'edit' => Pages\EditImagePosts::route('/{record}/edit'),
         ];
+    }
+
+    // permission access user dashboard
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasPermission('show-app');
+    }
+    public static function canCreate(): bool
+    {
+        return auth()->user()->hasPermission('create-app');
+    }
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->hasPermission('edit-app');
+    }
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->hasPermission('delete-app');
     }
 }
