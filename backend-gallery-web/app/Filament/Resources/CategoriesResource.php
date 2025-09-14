@@ -91,21 +91,34 @@ class CategoriesResource extends Resource
         return 'Category';
     }
 
-    // permission access user dashboard
+    // user access permission dashboard
     public static function canViewAny(): bool
     {
-        return auth()->user()->hasPermission('show-app');
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+
+        return $user->hasPermission('show-app');
     }
+
     public static function canCreate(): bool
     {
-        return auth()->user()->hasPermission('create-app');
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+
+        return $user->hasPermission('create-app');
     }
     public static function canEdit(Model $record): bool
     {
-        return auth()->user()->hasPermission('edit-app');
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+
+        return $user->hasPermission('edit-app');
     }
     public static function canDeleteAny(): bool
     {
-        return auth()->user()->hasPermission('delete-app');
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+
+        return $user->hasPermission('delete-app');
     }
 }
