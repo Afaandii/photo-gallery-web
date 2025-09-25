@@ -22,7 +22,6 @@ export default function About() {
       </div>
 
       <section className=" bg-gray-50">
-        {/* Section Tentang Kami */}
         <div className="max-w-5xl mx-auto py-16 px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Tentang Kami</h2>
           <p className="text-gray-600 leading-relaxed">
@@ -32,9 +31,7 @@ export default function About() {
           </p>
         </div>
 
-        {/* Visi & Misi */}
         <div className="max-w-[75rem] mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Misi */}
           <div className="relative rounded-2xl overflow-hidden shadow-lg">
             <img
               src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
@@ -52,7 +49,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Visi */}
           <div className="relative rounded-2xl overflow-hidden shadow-lg">
             <img
               src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
@@ -70,7 +66,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Statistik */}
         <div className="py-10 bg-gray-50">
           <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <div className="bg-gray-100 shadow-md rounded-xl p-6 text-center">
@@ -95,7 +90,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Call to Action */}
         <div className="max-w-5xl mx-auto py-20 text-center px-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Mau Ikut Berkontribusi?
