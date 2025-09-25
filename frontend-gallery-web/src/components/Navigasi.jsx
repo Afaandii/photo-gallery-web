@@ -30,7 +30,6 @@ export default function Navigasi() {
       }`}
     >
       <div className="flex items-center justify-between px-6 py-3 text-white">
-        {/* Logo */}
         <div className="avatar">
           <div className="lg:w-[250px] w-[150px] h-8 -ml-10 mt-3 lg:h-14 lg:mt-3 lg:ml-3">
             <img src="/assets/img/nav-logo.png" />
@@ -51,7 +50,6 @@ export default function Navigasi() {
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-6">
-          {/* Search Bar */}
           <form action="" className="mr-6">
             <div className="relative w-[450px]">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300">
@@ -65,7 +63,6 @@ export default function Navigasi() {
             </div>
           </form>
 
-          {/* Nav Links */}
           <ul className="flex gap-6 text-lg font-medium">
             <li>
               <a
@@ -105,7 +102,6 @@ export default function Navigasi() {
             </li>
           </ul>
 
-          {/* Login Button */}
           <a
             onClick={() =>
               (document.location.href = "http://localhost:8000/admin")
@@ -134,7 +130,6 @@ export default function Navigasi() {
             </div>
           </form>
 
-          {/* Nav Links */}
           <ul className="flex flex-col gap-3 text-lg font-medium">
             <li>
               <a
@@ -174,7 +169,6 @@ export default function Navigasi() {
             </li>
           </ul>
 
-          {/* Login Button */}
           <a
             onClick={() =>
               (document.location.href = "http://localhost:8000/admin")
